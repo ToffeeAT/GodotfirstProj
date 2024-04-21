@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://xomj3144pn4"]
+
+[ext_resource type="Texture2D" uid="uid://l21txccpmgd2" path="res://End (Idle).png" id="1_bq7tj"]
+[ext_resource type="Script" path="res://scene/end.gd" id="1_nfpsl"]
+[ext_resource type="PackedScene" uid="uid://dno7e8uuuksuy" path="res://scene/main_menu.tscn" id="2_5hfuu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbewg"]
+radius = 35.0
+height = 96.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_nfpsl")
+target_level = ExtResource("2_5hfuu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2890, 516)
+scale = Vector2(1.70312, 1.85938)
+texture = ExtResource("1_bq7tj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2890, 531)
+shape = SubResource("CapsuleShape2D_xbewg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
